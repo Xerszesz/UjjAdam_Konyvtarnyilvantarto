@@ -32,6 +32,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <DataGrid x:Name="KonyvekDisplay" HorizontalAlignment="Left" Height="357" Margin="325,41,0,0" VerticalAlignment="Top" Width="436" SelectionChanged="KonyvekDisplay_SelectionChanged"/>
 
     </Grid>
 </Window>

@@ -105,5 +105,10 @@ namespace Konyvtar_nyilvantarto
                 Konyvek.Add(new Konyvadatok(item));
             }
         }
+
+        private void KonyvekDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Feltoltes(KonyvekDisplay.SelectedIndex);
+        }
     }
 }
