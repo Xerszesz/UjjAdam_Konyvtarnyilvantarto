@@ -61,6 +61,24 @@ namespace Konyvtar_nyilvantarto
     }
     public partial class MainWindow : Window
     {
+        void Feltoltes (int index)
+        {
+            if (!Szerzodisplay.IsEnabled)
+            {
+                Szerzodisplay.IsEnabled = true;
+                Kiadodisplay.IsEnabled = true;
+                Evdisplay.IsEnabled = true;
+                Cimdisplay.IsEnabled = true;
+                Kolcsoncheck.IsEnabled = true;
+            }
+
+            IDdisplay.Text = Konyvek[index].ID.ToString();
+            Szerzodisplay.Text = Konyvek[index].szerzo;
+            Kiadodisplay.Text = Konyvek[index].kiado;
+            Evdisplay.Text = Konyvek[index].ev;
+            Cimdisplay.Text = Konyvek[index].cim;
+            Kolcsoncheck.IsChecked = Konyvek[index].kolcson;
+        }
         public string[] fajlhely = new string[3];
 
         public List<Konyvadatok> Konyvek = new List<Konyvadatok>();
