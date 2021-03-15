@@ -80,7 +80,12 @@ namespace Konyvtar_nyilvantarto
             beolvaso.ShowDialog();
             fajlhely[0] = beolvaso.FileName;
 
+            string[] verybeolvaso = File.ReadAllLines(fajlhely[0]);
 
+            foreach (string item in verybeolvaso)
+            {
+                Konyvek.Add(new Konyvadatok(item));
+            }
         }
     }
 }
