@@ -12,17 +12,46 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Konyvtar_nyilvantarto
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+   public class Konyvadatok
+    {
+        public int ID;
+        public string szerzo;
+        public string cim;
+        public string ev;
+        public string kiado;
+        public bool kolcson;
+
+    }
+
+    public class Tagadatok
+    {
+        public int ID;
+        public string nev;
+        public string lakcim;
+    }
+
+    public class Kolcsonadatok
+    {
+        public int tagID;
+        public int konyvID;
+        public string Datum;
+    }
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            OpenFileDialog beolvaso = new OpenFileDialog()
+            {
+                Filter = "txt files (*.txt|*txt)",
+                RestoreDirectory=true
+            };
+
         }
     }
 }
