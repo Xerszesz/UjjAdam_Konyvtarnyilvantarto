@@ -54,6 +54,15 @@ namespace Konyvtar_nyilvantarto
         public string nev { get => getnev; }
         public string getlakcim;
         public string lakcím { get => getlakcim; }
+
+        public Tagadatok(string sor)
+        {
+            string[] sorElemek = sor.Split(';');
+
+            getID = Convert.ToUInt32(sorElemek[0]);
+            getnev = sorElemek[1];
+            getlakcim = sorElemek[2];
+        }
     }
 
     public class Kolcsonadatok
@@ -97,7 +106,7 @@ namespace Konyvtar_nyilvantarto
                 RestoreDirectory=true
             };
 
-            beolvaso.Title = "Könyvtári adatok beolvasása";
+            beolvaso.Title = "Könyvtári könyvek beolvasása";
             beolvaso.ShowDialog();
             fajlhely[0] = beolvaso.FileName;
 
@@ -113,6 +122,22 @@ namespace Konyvtar_nyilvantarto
             }
 
             KonyvekDisplay.ItemsSource = Konyvek;
+
+            beolvaso.Title = "Könyvtári tagok beolvasása";
+            beolvaso.ShowDialog();
+            fajlhely[1] = beolvaso.FileName;
+
+            verybeolvaso = File.ReadAllLines(fajlhely[1]);
+            foreach (string item in verybeolvaso)
+            {
+                if (item.Trim() == "")
+                {
+                    continue;
+                }
+                Tagok.Add(new Tagadatok(item));
+            }
+
+            Tagdisplay.ItemsSource = Tagok;
         }
 
         private void KonyvekDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
