@@ -197,5 +197,24 @@ namespace Konyvtar_nyilvantarto
                 File.WriteAllLines(fajlhely[0], kivalasztottfajl);
             }
         }
+
+        private void KönyvekÚj_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Szerzodisplaykonyvek.IsEnabled && !Cimdisplaykonyvek.IsEnabled && !Evdisplaykonyvek.IsEnabled && !Kiadodisplaykonyvek.IsEnabled && !Kolcsoncheckkonyvek.IsEnabled)
+            {
+                Kolcsoncheckkonyvek.IsEnabled = true;
+                Kiadodisplaykonyvek.IsEnabled = true;
+                Evdisplaykonyvek.IsEnabled = true;
+                Cimdisplaykonyvek.IsEnabled = true;
+                Szerzodisplaykonyvek.IsEnabled = true;
+                
+            }
+            IDdisplaykonyvek.Text = (Konyvek[Konyvek.Count - 1].ID + 1).ToString();
+            Szerzodisplaykonyvek.Text = "";
+            Cimdisplaykonyvek.Text = "";
+            Evdisplaykonyvek.Text = "";
+            Kiadodisplaykonyvek.Text = "";
+            Kolcsoncheckkonyvek.IsChecked = false;
+        }
     }
 }
