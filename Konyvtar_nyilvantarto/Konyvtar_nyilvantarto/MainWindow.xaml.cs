@@ -68,9 +68,32 @@ namespace Konyvtar_nyilvantarto
 
     public class Kolcsonadatok
     {
-        public uint tagID;
-        public uint konyvID;
-        public DateTime Datum;
+        public uint getID;
+        public uint ID { get => getID; }
+        public uint gettagID;
+        public uint tagID { get => gettagID; }
+        public uint getkonyvID;
+        public uint konyvID { get => getkonyvID; }
+        
+        public DateTime getdatumki;
+        public DateTime datumki { get => getdatumki; }
+        public DateTime? getdatumvissza;
+        public DateTime? datumvissza { get => getdatumvissza; }
+
+        public Kolcsonadatok(string sor)
+        {
+            string[] sorElemei = sor.Split(';');
+
+            getID = Convert.ToUInt32(sorElemei[0]);
+            gettagID = Convert.ToUInt32(sorElemei[1]);
+            getkonyvID = Convert.ToUInt32(sorElemei[2]);
+            getdatumki = DateTime.ParseExact(sorElemei[3], "yyyy.MM.dd.", null);
+            if (sorElemei[4] != "")
+            {
+                getdatumvissza = DateTime.ParseExact(sorElemei[4], "yyyy.MM.dd", null);
+            }
+            else { getdatumvissza = null; }
+        }
     }
     public partial class MainWindow : Window
     {
@@ -161,6 +184,20 @@ namespace Konyvtar_nyilvantarto
             }
 
             Tagdisplay.ItemsSource = Tagok;
+
+            beolvaso.Title = "Könyvtári kölcsönök beolvasása";
+            beolvaso.ShowDialog();
+            fajlhely[2] = beolvaso.FileName;
+
+            verybeolvaso = File.ReadAllLines(fajlhely[2]);
+            foreach (string item in verybeolvaso)
+            {
+                if (item.Trim() == "")
+                {
+                    continue;
+                }
+                Kolcsonadat.Add(new Kolcsonadatok(item));
+            }
         }
 
         private void KonyvekDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -255,9 +292,14 @@ namespace Konyvtar_nyilvantarto
             Lakcimdisplaytagok.Text = "";
         }
 
-        private void Kolcsonzesdisplay_SelectionChanged()
+        private void Kolcsonzesdisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            TagFeltoltes(Kolcsonzesdisplay.SelectedIndex);
+        }
 
+        private void Kolcsonkeres_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
