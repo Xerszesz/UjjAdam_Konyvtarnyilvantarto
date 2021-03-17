@@ -254,5 +254,10 @@ namespace Konyvtar_nyilvantarto
             Nevdisplaytagok.Text = "";
             Lakcimdisplaytagok.Text = "";
         }
+
+        private void Kolcsonzesdisplay_SelectionChanged()
+        {
+
+        }
     }
 }
