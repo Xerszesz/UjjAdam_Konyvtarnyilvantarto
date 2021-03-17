@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using System.ComponentModel;
 
 namespace Konyvtar_nyilvantarto
 {
@@ -61,7 +62,7 @@ namespace Konyvtar_nyilvantarto
 
             getID = Convert.ToUInt32(sorElemek[0]);
             getnev = sorElemek[1];
-            getlakcim = sorElemek[2];
+            getlakcim = string.Join(", ",sorElemek.Skip(2));
         }
     }
 
@@ -91,10 +92,28 @@ namespace Konyvtar_nyilvantarto
             Cimdisplaykonyvek.Text = Konyvek[index].cim;
             Kolcsoncheckkonyvek.IsChecked = Konyvek[index].kolcson;
         }
+
+        void TagFeltoltes(int index)
+        {
+            if (index ==-1)
+            {
+                return;
+            }
+            if (!Nevdisplaytagok.IsEnabled)
+            {
+                Nevdisplaytagok.IsEnabled = true;
+                Lakcimdisplaytagok.IsEnabled = true;
+            }
+
+            IDdisplaytagok.Text = Tagok[index].ID.ToString();
+            Nevdisplaytagok.Text = Tagok[index].nev;
+            Lakcimdisplaytagok.Text = Tagok[index].lakcím;
+            
+        }
         public string[] fajlhely = new string[3];
 
-        public List<Konyvadatok> Konyvek = new List<Konyvadatok>();
-        public List<Tagadatok> Tagok = new List<Tagadatok>();
+        public BindingList<Konyvadatok> Konyvek = new BindingList<Konyvadatok>();
+        public BindingList<Tagadatok> Tagok = new BindingList<Tagadatok>();
         public List<Kolcsonadatok> Kolcsonadat = new List<Kolcsonadatok>();
         public MainWindow()
         {
