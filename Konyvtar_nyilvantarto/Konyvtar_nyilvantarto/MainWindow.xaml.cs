@@ -76,6 +76,10 @@ namespace Konyvtar_nyilvantarto
     {
         void Feltoltes (int index)
         {
+            if (index == -1)
+            {
+                return;
+            }
             if (!Szerzodisplaykonyvek.IsEnabled)
             {
                 Szerzodisplaykonyvek.IsEnabled = true;
@@ -162,6 +166,11 @@ namespace Konyvtar_nyilvantarto
         private void KonyvekDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Feltoltes(KonyvekDisplay.SelectedIndex);
+        }
+
+        private void Tagdisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TagFeltoltes(Tagdisplay.SelectedIndex);
         }
     }
 }
