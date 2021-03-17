@@ -185,5 +185,17 @@ namespace Konyvtar_nyilvantarto
             }
             else { Konyvek[konybeirtID] = new Konyvadatok(ujsor); }
         }
+
+        private void KönyvekTörlés_Click(object sender, RoutedEventArgs e)
+        {
+            int konyvbeirtID = Konyvek.ToList().FindIndex(x => x.ID == Convert.ToInt32(IDdisplaytagok.Text));
+            if (konyvbeirtID != -1)
+            {
+                Konyvek.RemoveAt(konyvbeirtID);
+                List<string> kivalasztottfajl = File.ReadAllLines(fajlhely[0]).ToList();
+                kivalasztottfajl.RemoveAt(konyvbeirtID);
+                File.WriteAllLines(fajlhely[0], kivalasztottfajl);
+            }
+        }
     }
 }
