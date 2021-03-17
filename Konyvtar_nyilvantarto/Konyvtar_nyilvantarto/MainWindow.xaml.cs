@@ -241,5 +241,18 @@ namespace Konyvtar_nyilvantarto
             }
             
         }
+
+        private void TagÚj_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Nevdisplaytagok.IsEnabled && !Lakcimdisplaytagok.IsEnabled)
+            {
+                Nevdisplaytagok.IsEnabled = true;
+                Lakcimdisplaytagok.IsEnabled = true;
+            }
+
+            IDdisplaytagok.Text = (Tagok[Tagok.Count - 1].ID + 1).ToString();
+            Nevdisplaytagok.Text = "";
+            Lakcimdisplaytagok.Text = "";
+        }
     }
 }
