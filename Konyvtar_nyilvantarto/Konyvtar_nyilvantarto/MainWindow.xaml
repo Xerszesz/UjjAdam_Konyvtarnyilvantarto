@@ -44,7 +44,14 @@
             </TabItem>
             <TabItem x:Name="Kolcsontab" Header="Kölcsönzés" Margin="1,0,-5,-2">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid HorizontalAlignment="Left" Height="351" Margin="330,10,0,0" VerticalAlignment="Top" Width="432"/>
+                    <DataGrid x:Name="Kolcsonzesdisplay" HorizontalAlignment="Left" Height="351" Margin="330,10,0,0" VerticalAlignment="Top" Width="432" SelectionChanged="Kolcsonzesdisplay_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="Szerző:" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,69,0,0" TextWrapping="Wrap" Text="Tag:" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,103,0,0" TextWrapping="Wrap" Text="Könyvnek Címe:" VerticalAlignment="Top"/>
+                    <TextBox x:Name="szerzodisplaykolcson" HorizontalAlignment="Left" Height="23" Margin="52,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+                    <TextBox x:Name="tagdisplaykolcson" HorizontalAlignment="Left" Height="23" Margin="36,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
+                    <TextBox x:Name="cimdisplaykolcson" HorizontalAlignment="Left" Height="23" Margin="99,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226"/>
+                    <Button x:Name="Kolcsonkeres" Content="Keres" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Width="304" Click="Kolcsonkeres_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

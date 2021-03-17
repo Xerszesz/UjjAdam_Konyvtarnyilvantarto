@@ -142,6 +142,7 @@ namespace Konyvtar_nyilvantarto
         public BindingList<Konyvadatok> Konyvek = new BindingList<Konyvadatok>();
         public BindingList<Tagadatok> Tagok = new BindingList<Tagadatok>();
         public List<Kolcsonadatok> Kolcsonadat = new List<Kolcsonadatok>();
+        public BindingList<Kolcsonadatok> KolcsonadatokDisplay = new BindingList<Kolcsonadatok>();
         public MainWindow()
         {
             InitializeComponent();
@@ -299,7 +300,30 @@ namespace Konyvtar_nyilvantarto
 
         private void Kolcsonkeres_Click(object sender, RoutedEventArgs e)
         {
-            
+            List<Kolcsonadatok> talalat = new List<Kolcsonadatok>();
+            List<Konyvadatok> keresettkonyv = Konyvek.Where(x => x.szerzo.ToLower().StartsWith(szerzodisplaykolcson.Text.ToLower())).ToList();
+            keresettkonyv = keresettkonyv.Intersect(Konyvek.Where(x => x.cim.ToLower().StartsWith(cimdisplaykolcson.Text.ToLower())), new Hashelőscucc()).ToList();
+            List<Tagadatok> keresetttag = Tagok.Where(x => x.nev.ToLower().StartsWith(tagdisplaykolcson.Text.ToLower())).ToList();
+            talalat = Kolcsonadat.Where(x => keresettkonyv.Exists(letezik => letezik.ID == x.konyvID)).ToList();
+            talalat = talalat.Where(x => x.datumvissza == null && (DateTime.Now - x.datumki).TotalDays > 30).ToList();
+
+        }
+
+        class Hashelőscucc : IEqualityComparer<Konyvadatok>
+        {
+            public bool megegyez(Konyvadatok b1, Konyvadatok b2) => b1.ID == b2.ID;
+
+            public int hashcodegyujto(Konyvadatok konyv) => konyv.GetHashCode();
+
+            public bool Equals(Konyvadatok x, Konyvadatok y)
+            {
+                throw new NotImplementedException();
+            }
+
+            public int GetHashCode(Konyvadatok obj)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
