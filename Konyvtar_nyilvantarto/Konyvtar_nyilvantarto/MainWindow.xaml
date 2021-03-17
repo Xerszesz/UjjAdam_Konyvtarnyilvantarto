@@ -5,23 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Konyvtar_nyilvantarto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="459" Width="807.5">
     <Grid>
-        <TextBox x:Name="IDdisplay" HorizontalAlignment="Left" Height="23" Margin="61,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="Szerzodisplay" HorizontalAlignment="Left" Height="23" Margin="61,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="Cimdisplay" HorizontalAlignment="Left" Height="23" Margin="61,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="Evdisplay" HorizontalAlignment="Left" Height="23" Margin="61,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
-        <TextBox x:Name="Kiadodisplay" HorizontalAlignment="Left" Height="23" Margin="61,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,31,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top" Height="23" Width="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,73,0,0" TextWrapping="Wrap" Text="Szerző:" VerticalAlignment="Top" Height="23" Width="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,115,0,0" TextWrapping="Wrap" Text="Cím:" VerticalAlignment="Top" Height="23" Width="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,153,0,0" TextWrapping="Wrap" Text="Év:" VerticalAlignment="Top" Height="23" Width="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,194,0,0" TextWrapping="Wrap" Text="Kiadó:" VerticalAlignment="Top" Height="23" Width="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,393,0,0" TextWrapping="Wrap" Text="Kölcsönözhető:" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Kolcsoncheck" Content="" HorizontalAlignment="Left" Margin="85,394,0,0" VerticalAlignment="Top"/>
-        <TabControl HorizontalAlignment="Left" Height="399" Margin="312,10,0,0" VerticalAlignment="Top" Width="458">
+        <TabControl HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="778">
             <TabItem x:Name="Konyvektab" Header="Könyvek">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="IDdisplay" HorizontalAlignment="Right" Height="24" Margin="0,26,486,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="9,27,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top" Height="23" Width="56"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="9,55,0,0" TextWrapping="Wrap" Text="Szerző:" VerticalAlignment="Top" Height="23" Width="56"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="9,83,0,0" TextWrapping="Wrap" Text="Cím:" VerticalAlignment="Top" Height="23" Width="56"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="Év:" VerticalAlignment="Top" Height="23" Width="56"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" Text="Kiadó:" VerticalAlignment="Top" Height="23" Width="56"/>
+                    <TextBox x:Name="Szerzodisplay" HorizontalAlignment="Left" Height="23" Margin="55,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
+                    <TextBox x:Name="Cimdisplay" HorizontalAlignment="Left" Height="22" Margin="55,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
+                    <TextBox x:Name="Evdisplay" HorizontalAlignment="Left" Height="23" Margin="55,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+                    <TextBox x:Name="Kiadodisplay" HorizontalAlignment="Left" Height="23" Margin="55,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="9,345,0,0" TextWrapping="Wrap" Text="Kölcsönözhető:" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="Kolcsoncheck" Content="" HorizontalAlignment="Left" Margin="94,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.025,2.833"/>
+                    <DataGrid x:Name="KonyvekDisplay" HorizontalAlignment="Left" Height="357" Margin="322,4,0,0" VerticalAlignment="Top" Width="436" SelectionChanged="KonyvekDisplay_SelectionChanged"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="Tagoktab" Header="Tagok">
                 <Grid Background="#FFE5E5E5"/>
@@ -32,7 +34,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <DataGrid x:Name="KonyvekDisplay" HorizontalAlignment="Left" Height="357" Margin="325,41,0,0" VerticalAlignment="Top" Width="436" SelectionChanged="KonyvekDisplay_SelectionChanged"/>
 
     </Grid>
 </Window>
