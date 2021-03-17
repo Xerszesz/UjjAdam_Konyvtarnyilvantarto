@@ -216,5 +216,30 @@ namespace Konyvtar_nyilvantarto
             Kiadodisplaykonyvek.Text = "";
             Kolcsoncheckkonyvek.IsChecked = false;
         }
+
+        private void TagMentés_Click(object sender, RoutedEventArgs e)
+        {
+            int tagbeirtID = Tagok.ToList().FindIndex(x => x.ID == Convert.ToInt32(IDdisplaytagok.Text));
+            string ujsor = $"\n{IDdisplaytagok.Text};{Nevdisplaytagok.Text};{Lakcimdisplaytagok.Text.Replace(", ",";")}";
+            if (tagbeirtID == -1)
+            {
+                File.AppendAllText(fajlhely[1], ujsor);
+                Tagok.Add(new Tagadatok(ujsor));
+            }
+            else { Tagok[tagbeirtID] = new Tagadatok(ujsor); }
+        }
+
+        private void TagTörlés_Click(object sender, RoutedEventArgs e)
+        {
+            int tagbeirtID = Tagok.ToList().FindIndex(x => x.ID == Convert.ToInt32(IDdisplaytagok.Text));
+            if (tagbeirtID == -1)
+            {
+                Tagok.RemoveAt(tagbeirtID);
+                List<string> kivalasztottfajl = File.ReadAllLines(fajlhely[1]).ToList();
+                kivalasztottfajl.RemoveAt(tagbeirtID);
+                File.WriteAllLines(fajlhely[1], kivalasztottfajl);
+            }
+            
+        }
     }
 }
