@@ -37,6 +37,9 @@
                     <TextBox x:Name="IDdisplaytagok" HorizontalAlignment="Left" Height="23" Margin="19,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
                     <TextBox x:Name="Nevdisplaytagok" HorizontalAlignment="Left" Height="23" Margin="29,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
                     <TextBox x:Name="Lakcimdisplaytagok" HorizontalAlignment="Left" Height="23" Margin="44,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270"/>
+                    <Button x:Name="TagMentés" Content="Mentés" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="304" Height="27"/>
+                    <Button x:Name="TagTörlés" Content="Törlés" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="304" Height="27"/>
+                    <Button x:Name="TagÚj" Content="Új" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Width="304" Height="27"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Kolcsontab" Header="Kölcsönzés" Margin="1,0,-5,-2">
