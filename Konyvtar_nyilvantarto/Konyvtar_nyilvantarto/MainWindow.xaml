@@ -23,9 +23,9 @@
                     <TextBlock HorizontalAlignment="Left" Margin="9,345,0,0" TextWrapping="Wrap" Text="Kölcsönözhető:" VerticalAlignment="Top"/>
                     <CheckBox x:Name="Kolcsoncheckkonyvek" Content="" HorizontalAlignment="Left" Margin="94,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.025,2.833"/>
                     <DataGrid x:Name="KonyvekDisplay" HorizontalAlignment="Left" Height="357" Margin="322,4,0,0" VerticalAlignment="Top" Width="436" SelectionChanged="KonyvekDisplay_SelectionChanged"/>
-                    <Button Content="Mentés" HorizontalAlignment="Left" Margin="25,204,0,0" VerticalAlignment="Top" Width="75" Height="93"/>
-                    <Button Content="Törlés" HorizontalAlignment="Left" Margin="105,204,0,0" VerticalAlignment="Top" Width="75" Height="93"/>
-                    <Button Content="Új" HorizontalAlignment="Left" Margin="185,204,0,0" VerticalAlignment="Top" Width="75" Height="93"/>
+                    <Button x:Name="Könyvekmentés" Content="Mentés" HorizontalAlignment="Left" Margin="25,204,0,0" VerticalAlignment="Top" Width="75" Height="93" Click="Könyvekmentés_Click"/>
+                    <Button x:Name="KönyvekTörlés" Content="Törlés" HorizontalAlignment="Left" Margin="105,204,0,0" VerticalAlignment="Top" Width="75" Height="93"/>
+                    <Button x:Name="KönyvekÚj" Content="Új" HorizontalAlignment="Left" Margin="185,204,0,0" VerticalAlignment="Top" Width="75" Height="93"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tagoktab" Header="Tagok">

@@ -172,5 +172,18 @@ namespace Konyvtar_nyilvantarto
         {
             TagFeltoltes(Tagdisplay.SelectedIndex);
         }
+
+        private void Könyvekmentés_Click(object sender, RoutedEventArgs e)
+        {
+            int konybeirtID = Konyvek.ToList().FindIndex(x => x.ID == Convert.ToInt32(IDdisplaykonyvek.Text));
+            string kolcsonozhetoe = Kolcsoncheckkonyvek.IsChecked.ToString().ToUpper()[0] + Kolcsoncheckkonyvek.IsChecked.ToString().Substring(1);
+            string ujsor = $"{IDdisplaykonyvek.Text};{Szerzodisplaykonyvek};{Cimdisplaykonyvek.Text};{Evdisplaykonyvek.Text};{Kiadodisplaykonyvek.Text};{kolcsonozhetoe}";
+            if (konybeirtID == -1)
+            {
+                File.AppendAllText(fajlhely[0], ujsor);
+                Konyvek.Add(new Konyvadatok(ujsor));
+            }
+            else { Konyvek[konybeirtID] = new Konyvadatok(ujsor); }
+        }
     }
 }
