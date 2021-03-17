@@ -48,9 +48,12 @@ namespace Konyvtar_nyilvantarto
 
     public class Tagadatok
     {
-        public uint ID;
-        public string nev;
-        public string lakcim;
+        public uint getID;
+        public uint ID { get => getID; }
+        public string getnev;
+        public string nev { get => getnev; }
+        public string getlakcim;
+        public string lakcím { get => getlakcim; }
     }
 
     public class Kolcsonadatok
@@ -63,21 +66,21 @@ namespace Konyvtar_nyilvantarto
     {
         void Feltoltes (int index)
         {
-            if (!Szerzodisplay.IsEnabled)
+            if (!Szerzodisplaykonyvek.IsEnabled)
             {
-                Szerzodisplay.IsEnabled = true;
-                Kiadodisplay.IsEnabled = true;
-                Evdisplay.IsEnabled = true;
-                Cimdisplay.IsEnabled = true;
-                Kolcsoncheck.IsEnabled = true;
+                Szerzodisplaykonyvek.IsEnabled = true;
+                Kiadodisplaykonyvek.IsEnabled = true;
+                Evdisplaykonyvek.IsEnabled = true;
+                Cimdisplaykonyvek.IsEnabled = true;
+                Kolcsoncheckkonyvek.IsEnabled = true;
             }
 
-            IDdisplay.Text = Konyvek[index].ID.ToString();
-            Szerzodisplay.Text = Konyvek[index].szerzo;
-            Kiadodisplay.Text = Konyvek[index].kiado;
-            Evdisplay.Text = Konyvek[index].ev;
-            Cimdisplay.Text = Konyvek[index].cim;
-            Kolcsoncheck.IsChecked = Konyvek[index].kolcson;
+            IDdisplaykonyvek.Text = Konyvek[index].ID.ToString();
+            Szerzodisplaykonyvek.Text = Konyvek[index].szerzo;
+            Kiadodisplaykonyvek.Text = Konyvek[index].kiado;
+            Evdisplaykonyvek.Text = Konyvek[index].ev;
+            Cimdisplaykonyvek.Text = Konyvek[index].cim;
+            Kolcsoncheckkonyvek.IsChecked = Konyvek[index].kolcson;
         }
         public string[] fajlhely = new string[3];
 
@@ -102,8 +105,14 @@ namespace Konyvtar_nyilvantarto
 
             foreach (string item in verybeolvaso)
             {
+                if (item.Trim()=="")
+                {
+                    continue;
+                }
                 Konyvek.Add(new Konyvadatok(item));
             }
+
+            KonyvekDisplay.ItemsSource = Konyvek;
         }
 
         private void KonyvekDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
